@@ -12,7 +12,7 @@ module.exports = {
       
       let botao = new Discord.ActionRowBuilder().addComponents(
         new Discord.ButtonBuilder()
-        .setCustomId("Ver")
+        .setCustomId("botao")
         .setEmoji('✅')
         .setStyle(Discord.ButtonStyle.Success), 
       )  
@@ -27,14 +27,14 @@ module.exports = {
       
         client.on('interactionCreate', (interaction) => {
           if(interaction.isButton) {
-            if (interaction.customId === "Ver") {
-              let cargo1 = "" // id do cargo que vai dar na verificação //
+            if (interaction.customId === "botao") {
+              let cargo = "" // id do cargo que vai dar na verificação //
               let embedVerificado = new Discord.EmbedBuilder()
-                .setDescription(`**✅ Você foi verificado com o cargo <@&${cargo1}>!**`)
+                .setDescription(`**✅ Você foi verificado com o cargo <@&${cargo}>!**`)
                 .setColor("Green") 
 
                 interaction.reply({ embeds: [embedVerificado], ephemeral: true})
-                interaction.member.roles.add(`${cargo1}`)
+                interaction.member.roles.add(`${cargo}`)
               let EmbedLogV = new Discord.EmbedBuilder()
                .setTitle(`✅・Um usuário se verificou`)
                .setThumbnail(client.user.displayAvatarURL())
